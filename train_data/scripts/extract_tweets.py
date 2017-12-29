@@ -53,4 +53,4 @@ data = json.load(open('../uncompressed/master_2017.json'))
 print(json.dumps(data, indent=4, sort_keys=True)) # Debug
 
 # Removing urls using sed and bash
-subprocess.call("bash url_remove.sh", shell=True)
+subprocess.call("bash format.sh", shell=True)
