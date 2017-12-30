@@ -12,6 +12,11 @@ Usage: train.sh <options>
     -e --epochs <amount>        Specify the amount of checkpoints/epochs you want
 ```
 
+Things you need to have preinstalled:
+- numpy
+- h5py
+- six
+
 ## Generating text
 Then, to generate text, type in:
 `docker exec -it trumptweet th sample.lua -checkpoint cv/checkpoint_10000.t7 -length 140`
