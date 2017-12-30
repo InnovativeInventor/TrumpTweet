@@ -35,3 +35,8 @@ Submodules used:
 
 - [Torch-rnn](https://github.com/jcjohnson/torch-rnn)
 - [Trump-tweets](https://github.com/bpb27/trump_tweet_data_archive)
+
+## TODO:
+- Combine docker-generate and docker-train into one folder named docker
+- Create own docker image on Docker Hub
+- Maybe combine generate.sh and train.sh
