@@ -8,7 +8,7 @@ To train type in:
 ```
 Usage: train.sh <options>
     -h --help                   Show help
-    -u --update                 Update tweets and process data
+    -u --update                 Update tweets and process data (clone recursively for this)
     -e --epochs <amount>        Specify the amount of checkpoints/epochs you want
 ```
 
