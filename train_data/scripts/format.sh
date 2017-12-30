@@ -46,7 +46,8 @@ sed -e 's|["]||g' ../text/trump_tweets_double_quotes.txt > ../text/trump_tweets_
 perl -pe "s@(?:\s'|'\s)@ @g" ../text/trump_tweets_single_quotes.txt > ../text/trump_tweets_cont.txt
 
 sed -e 's/[(]cont[)]//' ../text/trump_tweets_cont.txt >  ../text/trump_tweets_amp.txt
-sed -e 's/\&amp;//g' ../text/trump_tweets_amp.txt >  ../text/trump_tweets_unicode.txt
+sed -e 's/\&amp;//g' ../text/trump_tweets_amp.txt >  ../text/trump_tweets_rt.txt
+sed -e '/^RT/ d' ../text/trump_tweets_rt.txt >  ../text/trump_tweets_unicode.txt
 iconv -c -f utf-8 -t ascii ../text/trump_tweets_unicode.txt > ../text/trump_tweets_at.txt
 python3 format.py
 sed -e '/^\s*$/d' ../text/trump_tweets_spaces.txt > ../text/trump_tweets.txt
