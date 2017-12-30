@@ -50,3 +50,4 @@ sed -e 's/\&amp;//g' ../text/trump_tweets_amp.txt >  ../text/trump_tweets_unicod
 iconv -c -f utf-8 -t ascii ../text/trump_tweets_unicode.txt > ../text/trump_tweets_at.txt
 python3 format.py
 sed -e '/^\s*$/d' ../text/trump_tweets_spaces.txt > ../text/trump_tweets.txt
+cat ../common_phrases.txt >> ../text/trump_tweets.txt
