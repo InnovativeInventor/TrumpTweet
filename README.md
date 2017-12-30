@@ -11,6 +11,7 @@ Usage: train.sh <options>
     -u --update                 Update tweets and process data (clone recursively for this)
     -e --epochs <amount>        Specify the amount of checkpoints/epochs you want
 ```
+Tip: If you want to get your computer to run the training script in the background, type `screen bash train.sh <options>` and `CTL-A` `CTL-D`. To reattach the screen, type: `screen -r`.
 
 Things you need to have preinstalled:
 - numpy
