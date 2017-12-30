@@ -47,10 +47,9 @@ while year <= current_year:
             print(element['text']) # Debug
         except:
             print("Text does not exist in this line")
+        try:
+            all_tweets_url.write(element['full_text']+"\n")
+            print(element['full_text']) # Debug
+        except:
+            print("Text does not exist in this line")
     year+=1
-
-data = json.load(open('../uncompressed/master_2017.json'))
-print(json.dumps(data, indent=4, sort_keys=True)) # Debug
-
-# Removing urls using sed and bash
-subprocess.call("bash format.sh", shell=True)

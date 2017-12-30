@@ -27,22 +27,24 @@
 
 # Notes:
 # If docker requires sudo on your computer run this script as sudo
-# Usage: bash train.sh <checkpoints>
+# Type in bash train.sh --help for more info
+
 checkpoints=50
-VERSION="1.0"
+length=140
+VERSION="1.2"
 
 while [[ $# -gt 0 ]]
 do
 key="$1"
 
 case $key in
-    -c|--checkpoints)
+    -e|--epochs)
     checkpoints="$2"
     shift # past argument
     shift # past value
     ;;
-    -e|--epochs)
-    checkpoints="$2"
+    -l|--length)
+    length="$2"
     shift # past argument
     shift # past value
     ;;
@@ -65,7 +67,8 @@ display_help() {
     echo 'Options:'
     echo '   -h --help                   Show help'
     echo '   -u --update                 Update tweets and process data'
-    echo '   -e --epochs <amount>        Specify the amount of checkpoints/epochs you want'
+    echo '   -e --epochs <amount>        Specify the amount of epochs you want'
+    echo '   -l --length                 Specify length of tweet generated (default=140)'
     exit 1
 }
 
@@ -86,6 +89,10 @@ if [ "$update" == YES ]; then
     bash process.sh
 
     cd .. && cd ..
+
+    # Moving
+    cp train_data/trump_tweets.h5 docker-train/trump_tweets.h5
+    cp train_data/trump_tweets.json docker-train/trump_tweets.json
 fi
 
 # Removing containers if they exist
@@ -93,17 +100,15 @@ docker stop trumptweet
 docker rm trumptweet
 
 # Training in docker container
-cp train_data/trump_tweets.h5 docker/trump_tweets.h5
-cp train_data/trump_tweets.json docker/trump_tweets.json
-docker build -t trumptweet docker
-docker run -t -d --name trumptweet trumptweet
+docker build -t trumptweet_train docker-train
+docker run -t -d --name trumptweet trumptweet_train
 docker exec -it trumptweet th train.lua -input_h5 data/trump_tweets.h5 -input_json data/trump_tweets.json -max_epochs $checkpoints -gpu -1
-docker exec -it trumptweet th sample.lua -checkpoint cv/checkpoint_10000.t7 -length 180
+docker exec -it trumptweet th sample.lua -checkpoint cv/checkpoint_10000.t7 -length $length
 
-docker cp trumptweet:/root/torch-rnn/cv/ models/
+docker cp trumptweet:/root/torch-rnn/cv/ .
 
 echo "Experiment around with the checkpoints by typing:"
-echo "docker exec -it trumptweet th sample.lua -checkpoint cv/checkpoint_10000.t7 -length 140 -gpu -1"
-echo "Checkpoints are also saved in models/cv"
+echo "docker exec -it trumptweet th sample.lua -checkpoint cv/checkpoint_10000.t7 -length $length -gpu -1"
+echo "Checkpoints are also saved in cv/"
 echo "If you have everything installed on your system, you can type:"
-echo "th sample.lua -checkpoint models/cv/checkpoint_10000.t7 -length 180"
+echo "th sample.lua -checkpoint cv/checkpoint_10000.t7 -length $length"
