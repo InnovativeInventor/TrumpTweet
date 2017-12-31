@@ -53,7 +53,7 @@ case $key in
     shift # past argument
     shift # past value
     ;;
-    -rnn|--size)
+    --rnn|--size)
     rnn_size="$2"
     shift # past argument
     shift # past value
