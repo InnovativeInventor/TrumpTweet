@@ -71,6 +71,10 @@ case $key in
     update=YES
     shift # past argument
     ;;
+    -s|--speech)
+    speech=YES
+    shift # past argument
+    ;;
 esac
 done
 
@@ -100,7 +104,8 @@ if [ "$update" == YES ]; then
     cd train_data/scripts || echo "Error: train_data/scripts not found"
     bash uncompress.sh
     python3 extract_tweets.py
-    bash format.sh
+    bash format_tweets.sh
+    bash format_speeches.sh
     bash process.sh
 
     cd .. && cd ..
@@ -108,6 +113,8 @@ if [ "$update" == YES ]; then
     # Moving
     cp train_data/trump_tweets.h5 docker-train/trump_tweets.h5
     cp train_data/trump_tweets.json docker-train/trump_tweets.json
+    cp train_data/trump_speeches.h5 docker-train/trump_speeches.h5
+    cp train_data/trump_speeches.json docker-train/trump_speeches.json
 fi
 
 # Removing containers if they exist
@@ -117,16 +124,23 @@ docker rm trumptweet
 # Training in docker container
 docker build -t trumptweet_train docker-train
 docker run -t -d --name trumptweet trumptweet_train
-docker exec -it trumptweet th train.lua -input_h5 data/trump_tweets.h5 -input_json data/trump_tweets.json -num_layers $layers -rnn_size $rnn_size -max_epochs $checkpoints -gpu -1
+
+# Speech option
+if [ "$speech" == YES ]; then
+    docker exec -it trumptweet th train.lua -input_h5 data/trump_speeches.h5 -input_json data/trump_speeches.json -num_layers $layers -rnn_size $rnn_size -max_epochs $checkpoints -gpu -1
+else
+    docker exec -it trumptweet th train.lua -input_h5 data/trump_tweets.h5 -input_json data/trump_tweets.json -num_layers $layers -rnn_size $rnn_size -max_epochs $checkpoints -gpu -1
+fi
+
 docker exec -it trumptweet th sample.lua -checkpoint cv/checkpoint_10000.t7 -length $length
 
-mkdir -p cv/$DATE
+mkdir -p "cv/$DATE"
 docker cp trumptweet:/root/torch-rnn/cv/ .
-docker cp trumptweet:/root/torch-rnn/cv/ cv/$DATE/
-echo "Layers: $layers" > cv/$DATE/details.txt
-echo "Rnn_size: $rnn_size" >> cv/$DATE/details.txt
-echo "Layers: $layers" > cv/details.txt
-echo "Rnn_size: $rnn_size" >> cv/details.txt
+docker cp trumptweet:/root/torch-rnn/cv/ "cv/$DATE/"
+echo "Layers: $layers" > "cv/$DATE/details.txt"
+echo "Rnn_size: $rnn_size" >> "cv/$DATE/details.txt"
+echo "Layers: $layers" > "cv/details.txt"
+echo "Rnn_size: $rnn_size" >> "cv/details.txt"
 
 echo "Experiment around with the checkpoints by typing:"
 echo "docker exec -it trumptweet th sample.lua -checkpoint cv/checkpoint_10000.t7 -length $length -gpu -1"

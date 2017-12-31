@@ -49,6 +49,6 @@ sed -e 's/[(]cont[)]//' ../text/trump_tweets_cont.txt >  ../text/trump_tweets_am
 sed -e 's/\&amp;//g' ../text/trump_tweets_amp.txt >  ../text/trump_tweets_rt.txt
 sed -e '/^RT/ d' ../text/trump_tweets_rt.txt >  ../text/trump_tweets_unicode.txt
 iconv -c -f utf-8 -t ascii ../text/trump_tweets_unicode.txt > ../text/trump_tweets_at.txt
-python3 format.py
+python3 format_tweets.py
 sed -e '/^\s*$/d' ../text/trump_tweets_spaces.txt > ../text/trump_tweets.txt
-cat ../common_phrases.txt >> ../text/trump_tweets.txt
+# cat ../common_phrases.txt >> ../text/trump_tweets.txt

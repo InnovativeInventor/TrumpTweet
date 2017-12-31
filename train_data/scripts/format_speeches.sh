@@ -25,6 +25,4 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-cd ..
-python ../torch-rnn/scripts/preprocess.py --input_txt text/trump_tweets.txt --output_h5 trump_tweets.h5 --output_json trump_tweets.json
-python ../torch-rnn/scripts/preprocess.py --input_txt speeches/trump_speeches.txt --output_h5 trump_speeches.h5 --output_json trump_speeches.json
+cat ../speeches/*-*-* > ../speeches/trump_speeches.txt
