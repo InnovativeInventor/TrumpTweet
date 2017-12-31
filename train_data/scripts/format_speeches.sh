@@ -26,3 +26,6 @@
 # SOFTWARE.
 
 cat ../speeches/*-*-* > ../speeches/trump_speeches.txt
+sed -i '' '/^QUOTE/d' "../speeches/trump_speeches.txt"
+sed -i '' '/^\s*$/d' "../speeches/trump_speeches.txt"
+sed -i '' 's/\[[^][]*\]//g' "../speeches/trump_speeches.txt"
