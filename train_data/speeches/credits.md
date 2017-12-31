@@ -1,4 +1,22 @@
 ## Sources:
+September 1, 2016 (2): http://www.presidency.ucsb.edu/ws/index.php?pid=119198
+	Archive link: http://web.archive.org/web/20170329111817/http://www.presidency.ucsb.edu:80/ws/index.php?pid=119198 
+
+September 1, 2016: http://www.presidency.ucsb.edu/ws/index.php?pid=119196
+	Archive link: http://web.archive.org/web/20170329111807/http://www.presidency.ucsb.edu:80/ws/index.php?pid=119196
+
+August 31, 2016: http://www.presidency.ucsb.edu/ws/index.php?pid=119805
+	Archive link: http://web.archive.org/web/20170329111353/http://www.presidency.ucsb.edu:80/ws/index.php?pid=119805
+
+August 30, 2016: http://www.presidency.ucsb.edu/ws/index.php?pid=119806
+	Archive link: http://web.archive.org/web/20171206071219/http://www.presidency.ucsb.edu/ws/index.php?pid=119806
+
+August 24, 2016: http://www.presidency.ucsb.edu/ws/index.php?pid=123198
+	Archive link: http://web.archive.org/web/20170329022457/http://www.presidency.ucsb.edu:80/ws/index.php?pid=123198
+
+August 23, 2016: http://www.presidency.ucsb.edu/ws/index.php?pid=119176
+	Archive link: http://web.archive.org/web/20170329111716/http://www.presidency.ucsb.edu:80/ws/index.php?pid=119176
+
 August 18, 2016: http://www.presidency.ucsb.edu/ws/index.php?pid=119175
 	Archive link: http://web.archive.org/web/20170329111711/http://www.presidency.ucsb.edu:80/ws/index.php?pid=119175
 

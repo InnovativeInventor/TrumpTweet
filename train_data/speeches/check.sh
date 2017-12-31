@@ -25,8 +25,5 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-cat ../speeches/*-*-* > ../speeches/trump_speeches.txt
-sed -i '' '/^QUOTE/d' "../speeches/trump_speeches.txt"
-sed -i '' '/^\s*$/d' "../speeches/trump_speeches.txt"
-sed -i '' 's/\[[^][]*\]//g' "../speeches/trump_speeches.txt"
-sed -i '' 's/([^()]*)//g' "../speeches/trump_speeches.txt"
+find *-*-* -type f -print0 | xargs -0 grep -l "Promote Your Page Too"
+find *-*-* -type f -print0 | xargs -0 grep -l "The American Presidency Project"
