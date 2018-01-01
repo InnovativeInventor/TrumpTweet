@@ -34,7 +34,7 @@ checkpoints=50
 length=140
 VERSION="1.2"
 layers="3"
-rnn_size="256"
+rnn_size="200"
 
 DATE=`date +%m-%d@%H-%M`
 
