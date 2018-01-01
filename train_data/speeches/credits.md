@@ -1,4 +1,14 @@
 ## Sources:
+August 21, 2017: https://www.politico.com/story/2017/08/21/trump-afghanistan-speech-text-241882
+
+	Archive link: https://web.archive.org/web/20171114080145/https://www.politico.com/story/2017/08/21/trump-afghanistan-speech-text-241882
+
+
+October 2, 2017: https://www.politico.com/story/2017/10/02/full-text-donald-trumps-speech-on-las-vegas-shooting-243365
+
+	Archive link: https://web.archive.org/web/20171231192035/https://www.politico.com/story/2017/10/02/full-text-donald-trumps-speech-on-las-vegas-shooting-243365
+
+
 November 2, 2016 (2): http://www.presidency.ucsb.edu/ws/index.php?pid=123514
 
 	Archive link: https://web.archive.org/web/20170501135802/http://www.presidency.ucsb.edu/ws/index.php?pid=123514
