@@ -132,7 +132,7 @@ else
     docker exec -it trumptweet th train.lua -input_h5 data/trump_tweets.h5 -input_json data/trump_tweets.json -num_layers $layers -rnn_size $rnn_size -max_epochs $checkpoints -gpu -1
 fi
 
-docker exec -it trumptweet th sample.lua -checkpoint cv/checkpoint_10000.t7 -length $length
+docker exec -it trumptweet th sample.lua -checkpoint cv/checkpoint_10000.t7 -length $length -gpu -1
 
 mkdir -p "cv/$DATE"
 docker cp trumptweet:/root/torch-rnn/cv/ .
