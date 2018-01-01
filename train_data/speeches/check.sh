@@ -27,3 +27,5 @@
 
 find *-*-* -type f -print0 | xargs -0 grep -l "Promote Your Page Too"
 find *-*-* -type f -print0 | xargs -0 grep -l "The American Presidency Project"
+find *-*-* -type f -print0 | xargs -0 grep -l 'Audience:'
+find *-*-* -type f -print0 | xargs -0 grep -l 'Trump:'
