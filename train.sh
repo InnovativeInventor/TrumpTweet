@@ -36,7 +36,7 @@ VERSION="1.2"
 layers="3"
 rnn_size="256"
 
-DATE=`date +%m-%d' '@%H:%M`
+DATE=`date +%m-%d@%H-%M`
 
 while [[ $# -gt 0 ]]
 do
