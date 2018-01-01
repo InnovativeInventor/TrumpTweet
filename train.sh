@@ -30,13 +30,13 @@
 # Type in bash train.sh --help for more info
 
 # Default values
-checkpoints=50
+checkpoints=100
 length=140
 VERSION="1.2"
 layers="3"
 rnn_size="200"
 
-DATE=`date +%m-%d' '@%H:%M`
+DATE=`date +%m-%d@%H-%M`
 
 while [[ $# -gt 0 ]]
 do
@@ -136,7 +136,8 @@ docker exec -it trumptweet th sample.lua -checkpoint cv/checkpoint_10000.t7 -len
 
 mkdir -p "cv/$DATE"
 docker cp trumptweet:/root/torch-rnn/cv/ .
-docker cp trumptweet:/root/torch-rnn/cv/ "cv/$DATE/"
+docker cp trumptweet:/root/torch-rnn/cv/* "cv/$DATE"
+mv cv
 echo "Layers: $layers" > "cv/$DATE/details.txt"
 echo "Rnn_size: $rnn_size" >> "cv/$DATE/details.txt"
 echo "Layers: $layers" > "cv/details.txt"
