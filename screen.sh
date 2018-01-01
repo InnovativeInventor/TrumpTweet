@@ -25,6 +25,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-screen sudo bash train.sh
+screen sudo bash train.sh --update -s
 echo "Type in:"
 echo "docker exec -it trumptweet th sample.lua -checkpoint cv/checkpoint_40000.t7 -gpu -1"
