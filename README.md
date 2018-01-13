@@ -41,3 +41,4 @@ Submodules used:
 - Combine docker-generate and docker-train into one folder named docker
 - Create own docker image on Docker Hub
 - Maybe combine generate.sh and train.sh
+- Separate models trained on Trump's speeches and Trump's tweets

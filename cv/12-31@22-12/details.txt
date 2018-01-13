@@ -1,2 +1,0 @@
-Layers: 3
-Rnn_size: 256

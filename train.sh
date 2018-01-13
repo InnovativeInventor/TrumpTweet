@@ -128,18 +128,22 @@ docker run -t -d --name trumptweet trumptweet_train
 # Speech option
 if [ "$speech" == YES ]; then
     docker exec -it trumptweet th train.lua -input_h5 data/trump_speeches.h5 -input_json data/trump_speeches.json -num_layers $layers -rnn_size $rnn_size -max_epochs $checkpoints -gpu -1
+    msg="speech-"+$DATE
 else
     docker exec -it trumptweet th train.lua -input_h5 data/trump_tweets.h5 -input_json data/trump_tweets.json -num_layers $layers -rnn_size $rnn_size -max_epochs $checkpoints -gpu -1
+    msg="tweet-"+$DATE
 fi
 
 docker exec -it trumptweet th sample.lua -checkpoint cv/checkpoint_10000.t7 -length $length -gpu -1
 
-mkdir -p "cv/$DATE"
+echo "$msg"
+
+mkdir -p "cv/$msg"
 docker cp trumptweet:/root/torch-rnn/cv/ .
-docker cp trumptweet:/root/torch-rnn/cv/* "cv/$DATE"
+docker cp trumptweet:/root/torch-rnn/cv/* "cv/$msg"
 mv cv
-echo "Layers: $layers" > "cv/$DATE/details.txt"
-echo "Rnn_size: $rnn_size" >> "cv/$DATE/details.txt"
+echo "Layers: $layers" > "cv/$msg/details.txt"
+echo "Rnn_size: $rnn_size" >> "cv/$msg/details.txt"
 echo "Layers: $layers" > "cv/details.txt"
 echo "Rnn_size: $rnn_size" >> "cv/details.txt"
 
